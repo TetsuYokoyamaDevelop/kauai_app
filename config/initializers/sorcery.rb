@@ -366,7 +366,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `5 * 60`
     #
     # user.reset_password_time_between_emails =
-    
+
     # access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`
     #

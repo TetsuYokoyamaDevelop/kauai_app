@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  protect_from_forgery with: :exception
   skip_before_action :require_login, except: [:destroy]
 
   def new
@@ -7,7 +8,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(:users, notice: 'Login successful')
+      redirect_to(user_profiles_path(@user), notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new'
