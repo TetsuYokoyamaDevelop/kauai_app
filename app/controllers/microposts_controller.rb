@@ -48,7 +48,6 @@ class MicropostsController < ApplicationController
     # DELETE /profiles/1
     # DELETE /profiles/1.json
     def destroy
-      @micropost = micropost.find(params[:id])
       @micropost.destroy
       redirect_to microposts_path
     end

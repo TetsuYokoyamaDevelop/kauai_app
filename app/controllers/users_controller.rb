@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+
+  #テスト用
   def index
     @users = User.all
   end
@@ -44,7 +46,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = user.find(params[:id])
     @user.destroy
     redirect_to users_path
   end

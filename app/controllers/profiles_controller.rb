@@ -48,7 +48,6 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @profile = profile.find(params[:id])
     @profile.destroy
     redirect_to profiles_path
   end
