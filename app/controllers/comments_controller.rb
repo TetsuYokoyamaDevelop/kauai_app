@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+      @comment = Comment.find(params[:id])
   end
 
   # GET /profiles/new

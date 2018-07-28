@@ -10,6 +10,7 @@ class MicropostsController < ApplicationController
     # GET /profiles/1
     # GET /profiles/1.json
     def show
+      @micropost = Micropost.find(params[:id])
     end
 
     # GET /profiles/new
