@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'comment/index'
+  get 'comment/show'
+  get 'comment/new'
+  get 'comment/edit'
+  get 'comment/create'
+  get 'comment/update'
+  get 'comment/destroy'
   root :to => 'users#index'
 
   get 'login' => 'user_sessions#new', :as => :login
