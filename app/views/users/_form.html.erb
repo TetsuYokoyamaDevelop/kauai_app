@@ -18,12 +18,32 @@
 
   <div class="field">
      <%= form.label :password %><br>
-     <%= form.password_field :password %>
+     <%= form.password_field :password %><br>
   </div>
 
   <div class="field">
      <%= form.label :password_confirmation %><br>
-     <%= form.password_field :password_confirmation %>
+     <%= form.password_field :password_confirmation %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :nickname %><br>
+    <%= form.text_field :nickname %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %><br>
+    <%= form.number_field :gender %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %><br>
+    <%= form.date_select :birthday %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :introduction %><br>
+    <%= form.text_field :introduction %><br>
   </div>
 
   <div class="actions">
