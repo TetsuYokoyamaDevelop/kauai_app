@@ -1,50 +1,28 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user) do |form| %>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= fields_for(@user.profile) do |af| %>
+
+    <div class="field">
+      <%= af.label :nickname %><br>
+      <%= af.text_field :nickname %><br>
     </div>
+
+    <div class="field">
+      <%= af.label :gender %><br>
+      <%= af.number_field :gender %><br>
+    </div>
+
+    <div class="field">
+      <%= af.label :birthday %><br>
+      <%= af.date_select :birthday %><br>
+    </div>
+
+    <div class="field">
+      <%= af.label :introduction %><br>
+      <%= af.text_field :introduction %><br>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= form.label :email %><br>
-    <%= form.text_field :email %><br>
-  </div>
-
-  <div class="field">
-     <%= form.label :password %><br>
-     <%= form.password_field :password %><br>
-  </div>
-
-  <div class="field">
-     <%= form.label :password_confirmation %><br>
-     <%= form.password_field :password_confirmation %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :nickname %><br>
-    <%= form.text_field :nickname %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender %><br>
-    <%= form.number_field :gender %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :birthday %><br>
-    <%= form.date_select :birthday %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :introduction %><br>
-    <%= form.text_field :introduction %><br>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
