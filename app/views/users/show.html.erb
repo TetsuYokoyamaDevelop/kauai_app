@@ -6,13 +6,23 @@
 </p>
 
 <p>
-  <strong>password:</strong>
-  <%= @user.crypted_password %>
+  <strong>nickname:</strong>
+  <%= @user.profile.nickname %>
 </p>
 
 <p>
-  <strong>password_confirmation:</strong>
-  <%= @user.salt %>
+  <strong>gender:</strong>
+  <%= @user.profile.gender %>
+</p>
+
+<p>
+  <strong>birthday:</strong>
+  <%= @user.profile.birthday %>
+</p>
+
+<p>
+  <strong>introduction:</strong>
+  <%= @user.profile.introduction %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
