@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @profile = @user.profile
   end
 
   # GET /users/new
@@ -39,12 +40,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @profile = @user.profile
 
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
-    end
+      if @profile.update(profile_params)
+        flash[:success] = "Profile updated"
+        redirect_to @user
+      else
+        render 'edit'
+      end
+
   end
 
   def destroy
@@ -60,6 +64,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation,:nickname, :gender, :birthday, :introduction, :user_id)
+    end
+
+    def profile_params
+      params.require(:profile).permit(:nickname, :gender, :birthday, :introduction, :user_id)
     end
 end

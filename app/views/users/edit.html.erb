@@ -1,6 +1,36 @@
 <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<%= form_for(@user) do |form| %>
+
+  <%= fields_for(@user.profile) do |af| %>
+
+    <div class="field">
+      <%= af.label :nickname %><br>
+      <%= af.text_field :nickname %><br>
+    </div>
+
+    <div class="field">
+      <%= af.label :gender %><br>
+      <%= af.number_field :gender %><br>
+    </div>
+
+    <div class="field">
+      <%= af.label :birthday %><br>
+      <%= af.date_select :birthday %><br>
+    </div>
+
+    <div class="field">
+      <%= af.label :introduction %><br>
+      <%= af.text_field :introduction %><br>
+    </div>
+
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  
+<% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
