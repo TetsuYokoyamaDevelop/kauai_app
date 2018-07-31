@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @profile = @user.profile
   end
 
   # GET /users/new
@@ -40,9 +39,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @profile = @user.profile
 
-      if @profile.update(profile_params)
+
+      if @user.update(user_params)
         flash[:success] = "Profile updated"
         redirect_to @user
       else
@@ -64,10 +63,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation,:nickname, :gender, :birthday, :introduction, :user_id)
+      params.require(:user).permit(:email, :password, :password_confirmation,:nickname, :gender, :birthday, :introduction)
     end
 
-    def profile_params
-      params.require(:profile).permit(:nickname, :gender, :birthday, :introduction, :user_id)
-    end
 end
