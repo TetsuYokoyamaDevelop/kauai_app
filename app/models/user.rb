@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  validates :nickname, presence:true, allow_nil:true
+  validates :nickname, presence:true, on: :update
 
-  validates :gender, presence:true, allow_nil:true
+  validates :gender, presence:true, on: :update
 
-  validates :birthday, presence:true, allow_nil:true
+  validates :birthday, presence:true, on: :update
 
   validates :introduction, length: { maximum: 140 }
 end
