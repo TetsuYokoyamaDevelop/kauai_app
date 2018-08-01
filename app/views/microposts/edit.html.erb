@@ -1,6 +1,21 @@
-<h1>Editing micropost</h1>
+<h1>Editing Micropost</h1>
 
-<%= render 'form', micropost: @micropost %>
+<%= form_for(@micropost) do |form| %>
 
-<%= link_to 'Show', @micropost %> |
+    <div class="field">
+      <%= form.label :text %><br>
+      <%= form.text_field :text %><br>
+    </div>
+
+    <div class="field">
+      <%= form.label :tag %><br>
+      <%= form.number_field :tag %><br>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
 <%= link_to 'Back', microposts_path %>

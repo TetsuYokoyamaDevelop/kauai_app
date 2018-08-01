@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+
+    has_many :microposts, dependent: :destroy
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
@@ -14,6 +16,7 @@ class User < ApplicationRecord
   validates :nickname, presence:true, on: :update
 
   validates :gender, presence:true, on: :update
+  enum gender_type: { male: 1, femaile: 2, other: 3}
 
   validates :birthday, presence:true, on: :update
 

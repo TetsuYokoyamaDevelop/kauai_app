@@ -1,51 +1,44 @@
 class MicropostsController < ApplicationController
-    before_action :set_micropost, only: [:show, :edit, :update, :destroy]
-
+    before_action :require_login, only: [:create, :destroy]
     # GET /profiles
     # GET /profiles.json
     def index
-      @microposts= Micropost.all
-    end
-
-    # GET /profiles/1
-    # GET /profiles/1.json
-    def show
-      @micropost = Micropost.find(params[:id])
+      @microposts = Micropost.all
     end
 
     # GET /profiles/new
     def new
-      @micropost = Micropost.new
+      @user = User.find(1)
+      @micropost = @user.microposts.new
     end
 
-    # GET /profiles/1/edit
     def edit
+      @user = User.find(1)
+      @micropost = @user.microposts.find(params[:id])
     end
-
     # POST /profiles
     # POST /profiles.json
     def create
-      @micropost = Micropost.new(micropost_params)
+      @micropost = current_user.microposts.build(micropost_params)
 
       if @micropost.save
-        redirect_to @micropost
+        flash[:success] = "Micropost created!"
+        redirect_to microposts_path
       else
         render 'new'
       end
     end
 
-    # PATCH/PUT /profiles/1
-    # PATCH/PUT /profiles/1.json
     def update
-      @micropost = Micropost.find(params[:id])
+      @user = User.find(1)
+      @micropost = @user.microposts.find(params[:id])
 
-      if @micropost.update(micropost_params)
-        redirect_to @micropost
-      else
-        render 'edit'
-      end
-    end
-
+        if @micropost.update(micropost_params)
+          flash[:success] = "Micropost updated"
+          redirect_to microposts_path
+        else
+          render 'edit'
+        end
     # DELETE /profiles/1
     # DELETE /profiles/1.json
     def destroy
@@ -63,5 +56,5 @@ class MicropostsController < ApplicationController
       def micropost_params
         params.require(:micropost).permit(:text, :tag, :user_id)
       end
-
+    end
 end
