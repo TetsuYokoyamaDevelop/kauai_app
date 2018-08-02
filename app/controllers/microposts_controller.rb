@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :require_login, only: [:create, :destroy]
+    before_action :require_login, only: [:create, :edit, :update, :destroy]
     # GET /profiles
     # GET /profiles.json
     def index
@@ -8,19 +8,18 @@ class MicropostsController < ApplicationController
 
     # GET /profiles/new
     def new
-      @user = User.find(1)
-      @micropost = @user.microposts.new
+      @user = User.find(current_user.id)
+      @micropost = Micropost.new
     end
 
     def edit
-      @user = User.find(1)
+      @user = User.find(current_user.id)
       @micropost = @user.microposts.find(params[:id])
     end
     # POST /profiles
     # POST /profiles.json
     def create
-      @micropost = current_user.microposts.build(micropost_params)
-
+      @micropost = Micropost.new(micropost_params)
       if @micropost.save
         flash[:success] = "Micropost created!"
         redirect_to microposts_path
@@ -30,7 +29,7 @@ class MicropostsController < ApplicationController
     end
 
     def update
-      @user = User.find(1)
+      @user = User.find_by(current_user.id)
       @micropost = @user.microposts.find(params[:id])
 
         if @micropost.update(micropost_params)
@@ -39,9 +38,12 @@ class MicropostsController < ApplicationController
         else
           render 'edit'
         end
+    end
     # DELETE /profiles/1
     # DELETE /profiles/1.json
     def destroy
+      @user = User.find(current_user.id)
+      @micropost = @user.microposts.find_by(id: params[:id])
       @micropost.destroy
       redirect_to microposts_path
     end
@@ -56,5 +58,4 @@ class MicropostsController < ApplicationController
       def micropost_params
         params.require(:micropost).permit(:text, :tag, :user_id)
       end
-    end
 end

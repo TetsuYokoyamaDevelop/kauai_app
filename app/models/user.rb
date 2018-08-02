@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :nickname, presence:true, on: :update
 
   validates :gender, presence:true, on: :update
-  enum gender_type: { male: 1, femaile: 2, other: 3}
+  enum gender_type: { male: 1, female: 2, other: 3}
 
   validates :birthday, presence:true, on: :update
 
