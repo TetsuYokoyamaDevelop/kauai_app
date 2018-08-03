@@ -6,7 +6,12 @@ class MicropostsController < ApplicationController
       @microposts = Micropost.all
     end
 
-    # GET /profiles/new
+    def show
+      @user = current_user
+      @microposts = @user.microposts.all
+    end
+
+
     def new
       @user = current_user
       @micropost = Micropost.where(user_id: current_user.id).new
@@ -14,10 +19,10 @@ class MicropostsController < ApplicationController
 
     def edit
       @user = current_user
-      @micropost = @user.microposts.find(params[:id])
+      @micropost = @user.microposts.find_by(user_id:current_user.id)
     end
-    # POST /profiles
-    # POST /profiles.json
+
+
     def create
       @user = current_user
       @micropost = @user.microposts.new(micropost_params)
@@ -30,7 +35,7 @@ class MicropostsController < ApplicationController
     end
 
     def update
-      @user = User.find_by(current_user.id)
+      @user = current_user
       @micropost = @user.microposts.find(params[:id])
 
         if @micropost.update(micropost_params)
