@@ -8,18 +8,19 @@ class MicropostsController < ApplicationController
 
     # GET /profiles/new
     def new
-      @user = User.find(current_user.id)
-      @micropost = Micropost.new
+      @user = current_user
+      @micropost = Micropost.where(user_id: current_user.id).new
     end
 
     def edit
-      @user = User.find(current_user.id)
+      @user = current_user
       @micropost = @user.microposts.find(params[:id])
     end
     # POST /profiles
     # POST /profiles.json
     def create
-      @micropost = Micropost.new(micropost_params)
+      @user = current_user
+      @micropost = @user.microposts.new(micropost_params)
       if @micropost.save
         flash[:success] = "Micropost created!"
         redirect_to microposts_path
@@ -39,11 +40,10 @@ class MicropostsController < ApplicationController
           render 'edit'
         end
     end
-    # DELETE /profiles/1
-    # DELETE /profiles/1.json
+
     def destroy
       @user = User.find(current_user.id)
-      @micropost = @user.microposts.find_by(id: params[:id])
+      @micropost = @user.microposts.find_by(user_id: current_user.id)
       @micropost.destroy
       redirect_to microposts_path
     end
@@ -58,4 +58,5 @@ class MicropostsController < ApplicationController
       def micropost_params
         params.require(:micropost).permit(:text, :tag, :user_id)
       end
+
 end
