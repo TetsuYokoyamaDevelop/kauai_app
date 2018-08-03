@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
 
     def show
       @user = current_user
-      @microposts = @user.microposts
+      @microposts = @user.microposts.all
     end
 
 
@@ -19,7 +19,8 @@ class MicropostsController < ApplicationController
 
     def edit
       @user = current_user
-      @micropost = @user.microposts.find_by(user_id:current_user.id)
+      @micropost = Micropost.find_by(id: params[:id])
+
     end
 
 
@@ -36,7 +37,7 @@ class MicropostsController < ApplicationController
 
     def update
       @user = current_user
-      @micropost = @user.microposts.find(params[:id])
+      @micropost = @user.microposts.find_by(user_id:current_user.id)
 
         if @micropost.update(micropost_params)
           flash[:success] = "Micropost updated"
@@ -47,8 +48,8 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
-      @user = User.find(current_user.id)
-      @micropost = @user.microposts.find(params[:id])
+      @user = current_user
+      @micropost = Micropost.find_by(id: params[:id])
       @micropost.destroy
       redirect_to microposts_path
     end
@@ -61,7 +62,7 @@ class MicropostsController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def micropost_params
-        params.require(:micropost).permit(:text, :tag, :user_id)
+        params.require(:micropost).permit(:id,:text, :tag, :user_id)
       end
 
 end

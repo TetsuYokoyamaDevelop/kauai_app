@@ -1,5 +1,10 @@
 <h1>Editing Micropost</h1>
 
+<p>
+  <strong>nickname:</strong>
+  <%= @user.nickname %>
+</p>
+
 <%= form_for(@micropost) do |form| %>
 
     <div class="field">
@@ -18,4 +23,4 @@
 
 <% end %>
 
-<%= link_to 'Back', microposts_path %>
+<%= link_to 'Back', micropost_path(current_user.id) %>

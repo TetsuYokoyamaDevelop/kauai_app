@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:index, :new, :create, :showPostHistory]
 
   # GET /users
   # GET /users.json
@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+  end
+
+  def showPostHistory
+    @microposts = Micropost.where(user_id: current_user.id).all
   end
 
   # GET /users/new
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   # POST /users
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
 
       if @user.update(user_params)
         flash[:success] = "Profile updated"
-        redirect_to @user
+        redirect_to microposts_path
       else
         render 'edit'
       end

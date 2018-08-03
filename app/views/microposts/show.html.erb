@@ -5,17 +5,17 @@
     <%= @user.nickname %>
   </p>
 
-  <%= @microposts.each do |form| %>
+  <%= @microposts.each do |post| %>
 
     <p>
       <strong>text</strong>
-      <%= form.text %>
+      <%= post.text %>
       <strong>tag:</strong>
-      <%= form.tag %>
+      <%= post.tag %>
     </p>
 
-    <td><%= link_to 'Edit', edit_micropost_path(@microposts) %></td>
-    <td><%= link_to 'Destroy', micropost_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_micropost_path(post) %></td>
+    <td><%= link_to 'Destroy', micropost_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
   <% end %>
 
