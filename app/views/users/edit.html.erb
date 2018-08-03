@@ -1,6 +1,37 @@
 <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<%= form_for(@user) do |form| %>
+
+    <div class="field">
+      <%= form.label :nickname %><br>
+      <%= form.text_field :nickname %><br>
+    </div>
+
+    <div class="field">
+      <%= form.label :gender %><br>
+      <%= form.label :male %><br>
+      <%= form.radio_button :gender, 1, label: "male", inline: true %><br>
+      <%= form.label :female %><br>
+      <%= form.radio_button :gender, 2, label: "female", inline: true %><br>
+      <%= form.label :other %><br>
+      <%= form.radio_button :gender, 3, label: "other", inline: true %><br>
+    </div>
+
+    <div class="field">
+      <%= form.label :birthday %><br>
+      <%= form.date_select :birthday %><br>
+    </div>
+
+    <div class="field">
+      <%= form.label :introduction %><br>
+      <%= form.text_field :introduction %><br>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

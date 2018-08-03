@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <strong>nickname:</strong>
+  <%= @user.nickname %>
 </p>
 
 <p>
-  <strong>password:</strong>
-  <%= @user.crypted_password %>
+  <strong>gender:</strong>
+  <%= @user.gender %>
 </p>
 
 <p>
-  <strong>password_confirmation:</strong>
-  <%= @user.salt %>
+  <strong>birthday:</strong>
+  <%= @user.birthday %>
+</p>
+
+<p>
+  <strong>introduction:</strong>
+  <%= @user.introduction %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
