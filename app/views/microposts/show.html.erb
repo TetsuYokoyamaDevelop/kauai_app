@@ -10,15 +10,13 @@
     <p>
       <strong>text</strong>
       <%= form.text %>
-    </p>
-
-    <p>
       <strong>tag:</strong>
       <%= form.tag %>
     </p>
 
-    <%= link_to 'Edit', edit_micropost_path(@microposts) %> 
+    <td><%= link_to 'Edit', edit_micropost_path(@microposts) %></td>
+    <td><%= link_to 'Destroy', micropost_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-    <% end %>
+  <% end %>
 
 <%= link_to 'Back', microposts_path %>

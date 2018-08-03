@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
 
     def show
       @user = current_user
-      @microposts = @user.microposts.all
+      @microposts = @user.microposts
     end
 
 
@@ -48,7 +48,7 @@ class MicropostsController < ApplicationController
 
     def destroy
       @user = User.find(current_user.id)
-      @micropost = @user.microposts.find_by(user_id: current_user.id)
+      @micropost = @user.microposts.find(params[:id])
       @micropost.destroy
       redirect_to microposts_path
     end
