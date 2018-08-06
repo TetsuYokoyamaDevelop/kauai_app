@@ -1,55 +1,54 @@
 class MicropostsController < ApplicationController
-    before_action :require_login, only: [:create, :edit, :update, :destroy]
+    before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+
     # GET /profiles
     # GET /profiles.json
     def index
-      @microposts = Micropost.all
+      @microposts= Micropost.all
     end
 
+    # GET /profiles/1
+    # GET /profiles/1.json
     def show
-      @user = current_user
-      @microposts = @user.microposts.all
+      @micropost = Micropost.find(params[:id])
     end
 
-
+    # GET /profiles/new
     def new
-      @user = current_user
-      @micropost = Micropost.where(user_id: current_user.id).new
+      @micropost = Micropost.new
     end
 
+    # GET /profiles/1/edit
     def edit
-      @user = current_user
-      @micropost = Micropost.find_by(id: params[:id])
-
     end
 
-
+    # POST /profiles
+    # POST /profiles.json
     def create
-      @user = current_user
-      @micropost = @user.microposts.new(micropost_params)
+      @micropost = Micropost.new(micropost_params)
+
       if @micropost.save
-        flash[:success] = "Micropost created!"
-        redirect_to microposts_path
+        redirect_to @micropost
       else
         render 'new'
       end
     end
 
+    # PATCH/PUT /profiles/1
+    # PATCH/PUT /profiles/1.json
     def update
-      @user = current_user
-      @micropost = @user.microposts.find_by(user_id:current_user.id)
+      @micropost = Micropost.find(params[:id])
 
-        if @micropost.update(micropost_params)
-          flash[:success] = "Micropost updated"
-          redirect_to microposts_path
-        else
-          render 'edit'
-        end
+      if @micropost.update(micropost_params)
+        redirect_to @micropost
+      else
+        render 'edit'
+      end
     end
 
+    # DELETE /profiles/1
+    # DELETE /profiles/1.json
     def destroy
-      @user = current_user
-      @micropost = Micropost.find_by(id: params[:id])
       @micropost.destroy
       redirect_to microposts_path
     end
@@ -62,7 +61,7 @@ class MicropostsController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def micropost_params
-        params.require(:micropost).permit(:id,:text, :tag, :user_id)
+        params.require(:micropost).permit(:text, :tag, :user_id)
       end
 
 end

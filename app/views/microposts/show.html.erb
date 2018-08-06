@@ -1,22 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>nickname:</strong>
-    <%= @user.nickname %>
-  </p>
+<p>
+  <strong>Text:</strong>
+  <%= @micropost.text %>
+</p>
 
-  <%= @microposts.each do |post| %>
+<p>
+  <strong>Tag:</strong>
+  <%= @micropost.tag %>
+</p>
 
-    <p>
-      <strong>text</strong>
-      <%= post.text %>
-      <strong>tag:</strong>
-      <%= post.tag %>
-    </p>
+<p>
+  <strong>User_id:</strong>
+  <%= @micropost.user_id %>
+</p>
 
-    <td><%= link_to 'Edit', edit_micropost_path(post) %></td>
-    <td><%= link_to 'Destroy', micropost_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-  <% end %>
-
-<%= link_to 'Back', microposts_path %>
+<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
+<%= link_to 'Back', microposts_path(@micropost) %>
