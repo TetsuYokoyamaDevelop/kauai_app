@@ -42,7 +42,6 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
-      @user = current_user
         if @micropost.user_id == current_user.id
         @micropost.destroy
         redirect_to microposts_path
@@ -52,6 +51,10 @@ class MicropostsController < ApplicationController
     end
 
     private
+
+      def current_user
+        @user = current_user
+      end
 
       def set_micropost
         @micropost = Micropost.find(params[:id])
