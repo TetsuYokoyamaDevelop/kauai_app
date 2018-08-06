@@ -52,10 +52,6 @@ class MicropostsController < ApplicationController
 
     private
 
-      def current_user
-        @user = current_user
-      end
-
       def set_micropost
         @micropost = Micropost.find(params[:id])
       end
