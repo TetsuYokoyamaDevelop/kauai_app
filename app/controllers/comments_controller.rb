@@ -1,27 +1,24 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [ :show, :destroy]
+  before_action :require_login, only: [:create, :destroy]
 
   # GET /profiles
   # GET /profiles.json
   def index
-    @comments= Comment.all
-  end
-
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-      @comment = Comment.find(params[:id])
+    @comments = Comment.all
   end
 
   # GET /profiles/new
   def new
+    @user = current_user
+    @micropost = Micropost.find_by(id: params[:id])
     @comment = Comment.new
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
-    @comment = Comment.new(comment_params)
+    @user = current_user
+    @comment = @micropost.comments.new(comment_params)
 
     if @comment.save
       redirect_to comments_path

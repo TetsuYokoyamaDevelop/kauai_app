@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
-    before_action :require_login, only: [:create, :edit, :update, :destroy]
-    # GET /profiles
-    # GET /profiles.json
+    before_action :require_login
+    before_action :set_micropost, only: [:edit, :update, :destroy]
+
     def index
       @microposts = Micropost.all
     end
@@ -11,18 +11,14 @@ class MicropostsController < ApplicationController
       @microposts = @user.microposts.all
     end
 
-
     def new
       @user = current_user
-      @micropost = Micropost.where(user_id: current_user.id).new
+      @micropost = Micropost.new
     end
 
     def edit
       @user = current_user
-      @micropost = Micropost.find_by(id: params[:id])
-
     end
-
 
     def create
       @user = current_user
@@ -37,8 +33,6 @@ class MicropostsController < ApplicationController
 
     def update
       @user = current_user
-      @micropost = @user.microposts.find_by(user_id:current_user.id)
-
         if @micropost.update(micropost_params)
           flash[:success] = "Micropost updated"
           redirect_to microposts_path
@@ -49,18 +43,20 @@ class MicropostsController < ApplicationController
 
     def destroy
       @user = current_user
-      @micropost = Micropost.find_by(id: params[:id])
-      @micropost.destroy
-      redirect_to microposts_path
+        if @micropost.user_id == current_user.id
+        @micropost.destroy
+        redirect_to microposts_path
+        else
+          render 'show'
+        end
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
+
       def set_micropost
         @micropost = Micropost.find(params[:id])
       end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
       def micropost_params
         params.require(:micropost).permit(:id,:text, :tag, :user_id)
       end

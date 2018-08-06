@@ -1,5 +1,25 @@
-<h1>New Comment</h1>
+<h1>New Comments</h1>
 
-<%= render 'form', comment: @comment %>
+<p>
+  <strong>nickname:</strong>
+  <%= @user.nickname %>
+</p>
+<% if false %>
+<p>
+  <strong>text:</strong>
+  <%= @micropost_comment.micropost.text%>
+</p>
+<% end %>
+<%= form_for(@comment) do |form| %>
 
-<%= link_to 'Back',comments_path %>
+  <div class="field">
+    <%= form.label :replyment %><br>
+    <%= form.text_field :replyment %><br>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %><br>
+  </div>
+<% end %>
+
+<%= link_to 'Back',microposts_path %>
