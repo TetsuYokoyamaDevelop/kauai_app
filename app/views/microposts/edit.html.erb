@@ -1,26 +1,5 @@
 <h1>Editing Micropost</h1>
 
-<p>
-  <strong>nickname:</strong>
-  <%= @user.nickname %>
-</p>
-
-<%= form_for(@micropost) do |form| %>
-
-    <div class="field">
-      <%= form.label :text %><br>
-      <%= form.text_field :text %><br>
-    </div>
-
-    <div class="field">
-      <%= form.label :tag %><br>
-      <%= form.number_field :tag %><br>
-    </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back', micropost_path(current_user.id) %>
