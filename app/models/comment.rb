@@ -1,5 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  has_many :micropost_comments
-  has_many :microposts, through: :micropost_comments
+  has_and_belongs_to_many :microposts
 end

@@ -1,19 +1,21 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
-  before_action :set_comment, only: [:create, :destroy]
+  before_action :set_comment, only: [ :destroy]
 
   def index
+    @micropost = Micropost.find_by(id: params[:id])
     @comments = Comment.all
   end
 
   def new
     @user = current_user
+    @micropost = Micropost.find(params[:id])
     @comment = Comment.new
   end
 
   def create
     @user = current_user
-    @comment = Comment.where(micropost_id: current_micropost.id).new(comment_params)
+    @comment = Comment.where(user_id: current_user.id).new(comment_params)
 
     if @comment.save
       flash[:success] = "Comment created!"

@@ -4,12 +4,12 @@
   <strong>nickname:</strong>
   <%= @user.nickname %>
 </p>
-<% if false %>
+
 <p>
   <strong>text:</strong>
-  <%= @micropost_comment.micropost.text%>
+  <%= @micropost.text%>
 </p>
-<% end %>
+
 <%= form_for(@comment) do |form| %>
 
   <div class="field">
