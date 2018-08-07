@@ -7,8 +7,7 @@ class MicropostsController < ApplicationController
     end
 
     def show
-      @user = current_user
-      @microposts = @user.microposts.all
+      @micropost = Micropost.find_by(id: params[:id])
     end
 
     def new
@@ -18,11 +17,14 @@ class MicropostsController < ApplicationController
 
     def edit
       @user = current_user
+        unless @micropost.user_id == current_user.id
+          flash[:alert] = "You cannot edit this micropost"
+          render 'show'
+        end
     end
 
     def create
-      @user = current_user
-      @micropost = @user.microposts.new(micropost_params)
+      @micropost = Micropost.where(user_id: current_user.id).new(micropost_params)
       if @micropost.save
         flash[:success] = "Micropost created!"
         redirect_to microposts_path
@@ -42,10 +44,12 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
+        @user = current_user
         if @micropost.user_id == current_user.id
-        @micropost.destroy
-        redirect_to microposts_path
+          @micropost.destroy
+          redirect_to microposts_path
         else
+          flash[:alert] = "You cannot destroy this micropost"
           render 'show'
         end
     end

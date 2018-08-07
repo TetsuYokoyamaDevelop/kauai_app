@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
+  before_action :set_comment, only: [:create, :destroy]
 
   # GET /profiles
   # GET /profiles.json
