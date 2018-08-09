@@ -3,23 +3,24 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [ :destroy]
 
   def index
-    @micropost = Micropost.find_by(id: params[:id])
+    @micropost = Micropost.find_by(id: params[:micropost_id])
     @comments = Comment.all
   end
 
   def new
     @user = current_user
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.find_by(id: params[:micropost_id])
     @comment = Comment.new
   end
 
   def create
     @user = current_user
+    @micropost = Micropost.find_by(id: params[:micropost_id])
     @comment = Comment.where(user_id: current_user.id).new(comment_params)
 
     if @comment.save
       flash[:success] = "Comment created!"
-      redirect_to comments_path
+      redirect_to micropost_comments_path
     else
       render 'new'
     end

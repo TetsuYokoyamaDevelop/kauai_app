@@ -6,8 +6,7 @@ Rails.application.routes.draw do
 
   resources :user_sessions
   resources :users
-  resources :profiles
-  resources :microposts
-  resources :comments
-
+  resources :microposts do
+      resources :comments
+  end
 end

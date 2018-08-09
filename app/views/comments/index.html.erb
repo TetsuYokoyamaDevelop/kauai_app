@@ -2,7 +2,9 @@
 
 <h1>Comment</h1>
 
-<strong><% @micropost.text %></strong>
+<p>
+  <strong><%= @micropost.text %></strong>
+</p>
 
 <table>
   <thead>
@@ -16,7 +18,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.replyment %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', micropost_comments_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_micropost_comment_path %>

@@ -43,12 +43,6 @@ class MicropostsController < ApplicationController
         end
     end
 
-    def comment
-      @comment = Comment.new(replyment: params[:replyment],micropost_id: params[:micropost_id],user_id: params[:user_id])
-      @comment.save
-      redirect_to microposts_path
-    end
-
     def destroy
         @user = current_user
         if @micropost.user_id == current_user.id
