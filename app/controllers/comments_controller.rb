@@ -7,6 +7,11 @@ class CommentsController < ApplicationController
     @comments = @micropost.comments.all
   end
 
+  def show
+    @micropost = Micropost.find_by(id: params[:micropost_id])
+    @comment = @micropost.comments.find(params[:id])
+  end
+
   def new
     @user = current_user
     @micropost = Micropost.find_by(id: params[:micropost_id])
@@ -27,12 +32,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @micropost = Micropost.find_by(id: params[:micropost_id])
+    @comment = @micropost.comments.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.destroy
-      redirect_to comments_path
+      redirect_to micropost_comments_path
     else
       flash[:alert] = "You cannot destroy this comment"
-      render 'index'
+      render 'show'
     end
   end
 

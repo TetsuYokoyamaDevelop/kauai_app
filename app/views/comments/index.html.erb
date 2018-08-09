@@ -18,7 +18,8 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.replyment %></td>
-        <td><%= link_to 'Destroy', micropost_comments_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'show', micropost_comment_path(@micropost, comment) %></td>
+        <td><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

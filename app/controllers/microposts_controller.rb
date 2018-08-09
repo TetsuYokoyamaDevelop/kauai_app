@@ -1,13 +1,12 @@
 class MicropostsController < ApplicationController
     before_action :require_login
-    before_action :set_micropost, only: [:edit, :update, :destroy]
+    before_action :set_micropost, only: [:show, :edit, :update, :destroy]
 
     def index
       @microposts = Micropost.all
     end
 
     def show
-      @micropost = Micropost.find_by(id: params[:id])
     end
 
     def new
