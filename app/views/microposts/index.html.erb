@@ -17,7 +17,7 @@
         <td><%= micropost.text %></td>
         <td><%= micropost.tag %></td>
         <td><%= link_to 'show', micropost_path(micropost) %></td>
-        <td><%= link_to 'New Comment', micropost_comments_path(micropost) %></td>
+        <td><%= link_to 'Comment', micropost_comments_path(micropost) %></td>
           <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
