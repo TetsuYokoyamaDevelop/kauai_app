@@ -4,21 +4,21 @@ class CommentsController < ApplicationController
 
   def index
     @micropost = Micropost.find_by(id: params[:micropost_id])
-    @comments = Comment.all
+    @comments = @micropost.comments.all
   end
 
   def new
     @user = current_user
     @micropost = Micropost.find_by(id: params[:micropost_id])
-    @comment = Comment.new
+    @comment = @micropost.comments.new
   end
 
   def create
     @user = current_user
     @micropost = Micropost.find_by(id: params[:micropost_id])
-    @comment = Comment.where(user_id: current_user.id).new(comment_params)
+    @comment = @micropost.comments.where(user_id: current_user.id).new(comment_params)
 
-    if @comment.save
+    if @micropost.save
       flash[:success] = "Comment created!"
       redirect_to micropost_comments_path
     else
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:replyment, :user_id)
+      params.require(:comment).permit(:id, :replyment, :user_id)
     end
 
 end
