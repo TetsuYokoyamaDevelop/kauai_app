@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
       redirect_to(:microposts, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      render action: :new
     end
   end
 
@@ -19,5 +19,5 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to(:users, notice: 'Logged out!')
   end
-  
+
 end

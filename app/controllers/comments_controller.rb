@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
-  before_action :set_comment, only: [ :destroy]
+  before_action :set_comment, only: [ :destroy, :show]
   before_action :set_micropost, only: [:index, :show, :new, :create, :destroy]
 
   def index
@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = @micropost.comments.find(params[:id])
   end
 
   def new
@@ -23,18 +22,17 @@ class CommentsController < ApplicationController
         flash[:success] = "Comment created!"
         redirect_to micropost_comments_path
       else
-        render 'new'
+        render :new
       end
   end
 
   def destroy
-    @comment = @micropost.comments.find(params[:id])
       if @comment.user_id == current_user.id
         @comment.destroy
         redirect_to micropost_comments_path
       else
         flash[:alert] = "You cannot destroy this comment"
-        render 'show'
+        render :show
       end
   end
 
@@ -49,7 +47,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:id, :replyment, :user_id)
+      params.require(:comment).permit(:replyment, :user_id)
     end
 
 end

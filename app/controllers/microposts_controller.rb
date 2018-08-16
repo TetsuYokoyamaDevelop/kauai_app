@@ -2,6 +2,7 @@ class MicropostsController < ApplicationController
     before_action :require_login
     before_action :set_micropost, only: [:show, :edit, :update, :destroy]
     before_action :indicate_current_user, only: [:new, :edit, :update, :destroy]
+    before_action :check_correct_user, only: [:edit, :destroy]
 
     def index
       @microposts = Micropost.all
@@ -15,10 +16,6 @@ class MicropostsController < ApplicationController
     end
 
     def edit
-        unless @micropost.user_id == current_user.id
-          flash[:alert] = "You cannot edit this micropost"
-          render 'show'
-        end
     end
 
     def create
@@ -27,7 +24,7 @@ class MicropostsController < ApplicationController
         flash[:success] = "Micropost created!"
         redirect_to microposts_path
       else
-        render 'new'
+        render :new
       end
     end
 
@@ -36,21 +33,23 @@ class MicropostsController < ApplicationController
           flash[:success] = "Micropost updated"
           redirect_to microposts_path
         else
-          render 'edit'
+          render :edit
         end
     end
 
     def destroy
-        if @micropost.user_id == current_user.id
-          @micropost.destroy
-          redirect_to microposts_path
-        else
-          flash[:alert] = "You cannot destroy this micropost"
-          render 'show'
-        end
+      @micropost.destroy
+      redirect_to microposts_path
     end
 
     private
+
+      def check_correct_user
+        unless @micropost.user_id == current_user.id
+          flash[:alert] = "You do not have permission"
+          render :show
+        end
+      end
 
       def indicate_current_user
         @user = current_user
