@@ -1,0 +1,2 @@
+module MyMicropostHelper
+end

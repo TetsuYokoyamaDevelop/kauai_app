@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1 class ="text-center">MicroPosts</h1>
+<h1 class ="text-center">My Post History</h1>
 <div class="container">
   <div class="button_wrapper">
     <%= link_to 'New MicroPost', new_micropost_path ,:class => "btn btn-primary" %>
@@ -33,7 +33,12 @@
                     <div class="col-sm">
                       <td><%= link_to 'Comment', micropost_comments_path(micropost) ,:class => "btn btn-info"%></td>
                     </div>
+
                 </div>
+            </tr>
+            <tr>
+              <td><%= link_to 'show', micropost_path(micropost) %></td>
+              <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

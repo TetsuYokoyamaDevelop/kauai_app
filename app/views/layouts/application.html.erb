@@ -11,7 +11,9 @@
   <div id="nav">
     <div class="btn-group-vertical">
       <% if current_user %>
+        <%= link_to "My Page", mypage_microposts_path(current_user.id),:class => "btn btn-success" %>
         <%= link_to "Edit Profile", edit_user_path(current_user.id),:class => "btn btn-danger" %>
+          <%= link_to "Microposts", microposts_path(current_user.id),:class => "btn btn-light" %>
         <%= link_to "Logout", logout_path,:class => "btn btn-secondary" , method: :post %>
       <% else %>
         <%= link_to "Register", new_user_path,:class => "btn btn-danger"  %>

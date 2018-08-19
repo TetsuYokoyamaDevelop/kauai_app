@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :require_login
     before_action :set_micropost, only: [:show, :edit, :update, :destroy]
-    before_action :indicate_current_user, only: [:new, :edit, :update, :destroy]
+    before_action :indicate_current_user, only: [:new, :edit, :mypage, :update, :destroy]
     before_action :check_correct_user, only: [:edit, :destroy]
 
     def index
@@ -16,6 +16,10 @@ class MicropostsController < ApplicationController
     end
 
     def edit
+    end
+
+    def mypage
+      @microposts = @user.microposts.all
     end
 
     def create
