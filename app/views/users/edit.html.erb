@@ -1,37 +1,39 @@
-<h1>Editing User</h1>
+<h1 class ="text-center">Editing User</h1><br>
+
+<div class="container">
 
 <%= form_for(@user) do |form| %>
 
     <div class="field">
-      <%= form.label :nickname %><br>
-      <%= form.text_field :nickname %><br>
-    </div>
+      <%= form.text_field :nickname , class: 'form-control', placeholder: "Nickname"  %><br>
+    </div><br>
 
     <div class="field">
       <%= form.label :gender %><br>
-      <%= form.label :male %><br>
+      <%= form.label :male %>
       <%= form.radio_button :gender, 1, label: "male", inline: true %><br>
-      <%= form.label :female %><br>
+      <%= form.label :female %>
       <%= form.radio_button :gender, 2, label: "female", inline: true %><br>
-      <%= form.label :other %><br>
+      <%= form.label :other %>
       <%= form.radio_button :gender, 3, label: "other", inline: true %><br>
-    </div>
+    </div><br>
 
     <div class="field">
       <%= form.label :birthday %><br>
       <%= form.date_select :birthday %><br>
-    </div>
+    </div><br>
 
     <div class="field">
-      <%= form.label :introduction %><br>
-      <%= form.text_field :introduction %><br>
+      <%= form.text_field :introduction, class: 'form-control', placeholder: "introduction" %><br>
     </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-primary"%><br>
   </div>
 
-<% end %>
+<% end %><br>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', microposts_path %>
+<%= link_to 'Show', @user , :class => "btn btn-warning"%>
+<%= link_to 'Back', microposts_path ,:class => "btn btn-info"%>
+
+</div>
