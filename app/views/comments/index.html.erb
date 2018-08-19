@@ -6,10 +6,10 @@
   <strong><%= @micropost.text %></strong>
 </p>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Replyment</th>
+      <th scope="col">Replyment</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,6 +27,6 @@
 
 <br>
 
-<%= link_to 'New Comment', new_micropost_comment_path %>
+<%= link_to 'New Comment', new_micropost_comment_path, :class => "btn btn-primary" %>
 
-<%= link_to 'Back',microposts_path %>
+<%= link_to 'Back',microposts_path, :class => "btn btn-info" %>

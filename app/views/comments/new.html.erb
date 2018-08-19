@@ -13,14 +13,13 @@
 <%= form_for(@comment, :url => micropost_comments_path) do |form| %>
 
   <div class="field">
-    <%= form.label :replyment %><br>
-    <%= form.text_field :replyment %><br>
+    <%= form.text_field :replyment , class: 'form-control', placeholder: "Replyment", autofocus: true  %><br>
   </div>
 
   <div class="actions">
-    <%= form.submit %><br>
+    <%= form.submit :class => "btn btn-primary" %><br>
   </div>
 
-<% end %>
+<% end %><br>
 
-<%= link_to 'Back',micropost_comments_path %>
+<%= link_to 'Back',micropost_comments_path , :class => "btn btn-info"%>

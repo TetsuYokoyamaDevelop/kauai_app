@@ -1,22 +1,21 @@
-<p>
-  <strong>nickname:</strong>
-  <%= @user.nickname %>
-</p>
+<div class="container">
+  <div class="form-group">
+      <p>
+        <strong>nickname:</strong>
+        <%= @user.nickname %>
+      </p>
+      <%= form_for(@micropost) do |form| %>
+          <div class="field">
+            <%= form.text_field :text, class: 'form-control', placeholder: "Text", autofocus: true  %><br>
+          </div>
 
-<%= form_for(@micropost) do |form| %>
+          <div class="field">
+            <%= form.number_field :tag , class: 'form-control', placeholder: "Tag", autofocus: true  %><br>
+          </div>
 
-    <div class="field">
-      <%= form.label :text %><br>
-      <%= form.text_field :text %><br>
-    </div>
-
-    <div class="field">
-      <%= form.label :tag %><br>
-      <%= form.number_field :tag %><br>
-    </div>
-
-  <div class="actions">
-    <%= form.submit %>
+          <div class="actions">
+            <%= form.submit :class => "btn btn-primary"%>
+          </div>
+      <% end %>
   </div>
-
-<% end %>
+</div>
