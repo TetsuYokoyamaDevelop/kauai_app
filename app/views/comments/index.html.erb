@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Comment</h1>
+<h1 class="text-center">Comment</h1><br>
+
+<div class="container">
 
 <p>
   <strong><%= @micropost.text %></strong>
@@ -17,9 +19,12 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.replyment %></td>
-        <td><%= link_to 'show', micropost_comment_path(@micropost, comment) %></td>
-        <td><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="row">
+            <div class="col-sm">
+              <td class="col-xs-3"><%= comment.replyment %></td>
+              <td class="col-xs-3"><%= link_to 'show', micropost_comment_path(@micropost, comment), :class => "btn btn-warning" %></td>
+              <td class="col-xs-3"><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +35,5 @@
 <%= link_to 'New Comment', new_micropost_comment_path, :class => "btn btn-primary" %>
 
 <%= link_to 'Back',microposts_path, :class => "btn btn-info" %>
+
+</div>

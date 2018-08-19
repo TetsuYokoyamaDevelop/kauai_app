@@ -1,8 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>replyment</strong>
-      <%= @comment.replyment %>
-    </p>
+<div class="container">
 
-    <td><%= link_to 'Back', micropost_comments_path %></td>
+<table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Replyment</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+        <tbody>
+            <tr>
+              <td class="text-center">
+                  <%= @comment.replyment %>
+              </td>
+            </tr>
+        </tbody>
+</table>
+    <td><%= link_to 'Back', micropost_comments_path, :class => "btn btn-info" %></td>
+</div>

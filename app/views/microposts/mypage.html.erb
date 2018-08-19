@@ -19,26 +19,22 @@
             <tr>
                 <div class="row">
                     <div class="col-sm">
-                        <td class="col-xs-3 col-ms-3 col-md-4 col-lg-4"><%= micropost.user.nickname %></td>
+                        <td class="col-xs-3"><%= micropost.user.nickname %></td>
                     </div>
 
                     <div class="col-sm">
-                        <td class="col-xs-3 col-ms-3 col-md-4 col-lg-4"><%= micropost.text %></td>
+                        <td class="col-xs-3"><%= micropost.text %></td>
                     </div>
 
                     <div class="col-sm">
-                      <td class="col-xs-3 col-ms-3 col-md-4 col-lg-4"><%= micropost.tag %></td>
+                      <td class="col-xs-3"><%= micropost.tag %></td>
                     </div>
-
-                    <div class="col-sm">
-                      <td><%= link_to 'Comment', micropost_comments_path(micropost) ,:class => "btn btn-info"%></td>
-                    </div>
-
                 </div>
             </tr>
             <tr>
-              <td><%= link_to 'show', micropost_path(micropost) %></td>
-              <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Comment', micropost_comments_path(micropost) ,:class => "btn btn-info"%></td>
+              <td><%= link_to 'show', micropost_path(micropost) ,:class => "btn btn-warning"%></td>
+              <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger"%></td>
             </tr>
           <% end %>
         </tbody>
