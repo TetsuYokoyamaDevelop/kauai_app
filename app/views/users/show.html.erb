@@ -1,24 +1,24 @@
 <p id="notice" class="text-center"><%= notice %></p>
 
 <p>
-  <strong>nickname:</strong>
+  <strong>ニックネーム:</strong>
   <%= @user.nickname %>
 </p>
 
 <p>
-  <strong>gender:</strong>
+  <strong>性別:</strong>
   <%= @user.gender %>
 </p>
 
 <p>
-  <strong>birthday:</strong>
+  <strong>生年月日:</strong>
   <%= @user.birthday %>
 </p>
 
 <p>
-  <strong>introduction:</strong>
+  <strong>自己紹介:</strong>
   <%= @user.introduction %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user),:class => "btn btn-success" %> 
+<%= link_to '編集', edit_user_path(@user),:class => "btn btn-success" %> 
 <%= link_to 'Back', edit_user_path(@user),:class => "btn btn-secondary" %>

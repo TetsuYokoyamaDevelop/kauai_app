@@ -1,12 +1,12 @@
 <div class="container">
   <div class="table-responsive">
     <tr>
-      <h3><span class="badge badge-success"><th scope="col">Nickname: <%= @user.nickname %></th></span></h3>
+      <h3><span class="badge badge-success"><th scope="col">ニックネーム: <%= @user.nickname %></th></span></h3>
       <th colspan="3"></th>
     </tr>
       <%= form_for(@micropost) do |form| %>
               <div class="field">
-                  <%= form.text_area :text, class: 'form-control', placeholder: "Text", autofocus: true  %><br>
+                  <%= form.text_area :text, class: 'form-control', placeholder: "ツイート", autofocus: true  %><br>
               </div>
               <div class="actions">
                 <%= form.submit :class => "btn btn-primary"%>

@@ -5,20 +5,26 @@
       <%= stylesheet_link_tag    "application" %>
       <%= javascript_include_tag "application" %>
       <%= csrf_meta_tags %>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
 
   <div id="nav">
-    <div class="btn-group-vertical">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+         <h5 class="my-0 mr-md-auto font-weight-normal">Tetsutter</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
       <% if current_user %>
-        <%= link_to "History", post_history_microposts_path(current_user.id),:class => "btn btn-success" %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id),:class => "btn btn-danger" %>
-          <%= link_to "Microposts", microposts_path(current_user.id),:class => "btn btn-light" %>
-        <%= link_to "Logout", logout_path,:class => "btn btn-secondary" , method: :post %>
+         <a class="p-2 text-dark" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "PR編集", edit_user_path(current_user.id) %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "ツイート", microposts_path(current_user.id) %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post %></a>
       <% else %>
-        <%= link_to "Register", new_user_path,:class => "btn btn-danger"  %>
+        <a class="p-2 text-dark" href="#"><%= link_to "登録", new_user_path %></a>
       <% end %>
+        </nav>
+       </div>
     </div>
+
   </div>
   <div>
     <p id="alert" class="text-center"><%= flash[:alert] %></p>

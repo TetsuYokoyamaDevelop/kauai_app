@@ -1,30 +1,30 @@
-<h1 class ="text-center">Editing User</h1><br>
+<h1 class ="text-center">プロフィール編集</h1><br>
 
 <div class="container">
 
 <%= form_for(@user) do |form| %>
 
     <div class="field">
-      <%= form.text_field :nickname , class: 'form-control', placeholder: "Nickname"  %><br>
+      <%= form.text_field :nickname , class: 'form-control', placeholder: "ニックネーム"  %><br>
     </div><br>
 
     <div class="field">
-      <%= form.label :gender %><br>
-      <%= form.label :male %>
+      <%= form.label "性別" %><br>
+      <%= form.label "男性" %>
       <%= form.radio_button :gender, 1, label: "male", inline: true %><br>
-      <%= form.label :female %>
+      <%= form.label "女性" %>
       <%= form.radio_button :gender, 2, label: "female", inline: true %><br>
-      <%= form.label :other %>
+      <%= form.label "その他" %>
       <%= form.radio_button :gender, 3, label: "other", inline: true %><br>
     </div><br>
 
     <div class="field">
-      <%= form.label :birthday %><br>
+      <%= form.label "生年月日" %><br>
       <%= form.date_select :birthday %><br>
     </div><br>
 
     <div class="field">
-      <%= form.text_field :introduction, class: 'form-control', placeholder: "introduction" %><br>
+      <%= form.text_area :introduction, class: 'form-control', placeholder: "自己紹介" %><br>
     </div>
 
   <div class="actions">

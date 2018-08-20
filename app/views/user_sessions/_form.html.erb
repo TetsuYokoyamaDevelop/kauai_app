@@ -12,10 +12,12 @@
               <%= password_field_tag :password ,params[:password], class: 'form-control', placeholder: "Password", autofocus: true  %><br>
             </div>
     </div>
-  <div class="actions">
-    <div class="button_wrapper">
-      <%= submit_tag "Login" ,:class => "btn btn-primary" %>
+    <div class="btn-lg">
+      <div class="actions">
+        <div class="button_wrapper">
+          <%= submit_tag "ログイン" ,:class => "btn btn-primary" %>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 <% end %>
