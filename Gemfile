@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sorcery'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'pry-rails'

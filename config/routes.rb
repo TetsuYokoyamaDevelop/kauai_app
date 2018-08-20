@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :microposts do
       collection do
-      get 'mypage'
+      get 'post_history'
     end
       resources :comments
   end
