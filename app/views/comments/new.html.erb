@@ -1,15 +1,12 @@
-<h1>New Comments</h1>
+<h1 class="text-center">New Comments</h1>
 
-<p>
-  <strong>nickname:</strong>
-  <%= @user.nickname %>
-</p>
+<div class="container">
 
+<h3><span class="badge badge-success"><th scope="col">Nickname: <%= @user.nickname %></th></span></h3>
 <p>
   <strong>text:</strong>
   <%= @micropost.text%>
 </p>
-
 <%= form_for(@comment, :url => micropost_comments_path) do |form| %>
 
   <div class="field">
@@ -22,4 +19,6 @@
 
 <% end %><br>
 
-<%= link_to 'Back',micropost_comments_path , :class => "btn btn-info"%>
+<%= link_to 'Back',micropost_comments_path , :class => "btn btn-secondary"%>
+
+</div>

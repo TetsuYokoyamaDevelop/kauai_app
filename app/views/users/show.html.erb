@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
 <p>
   <strong>nickname:</strong>
@@ -20,5 +20,5 @@
   <%= @user.introduction %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', edit_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user),:class => "btn btn-success" %> 
+<%= link_to 'Back', edit_user_path(@user),:class => "btn btn-secondary" %>

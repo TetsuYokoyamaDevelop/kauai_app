@@ -4,36 +4,32 @@
 
 <div class="container">
 
-<p>
+  <h3><span class="badge badge-secondary">Nickname: <%= @micropost.user.nickname %></span></h3>
   <strong><%= @micropost.text %></strong>
-</p>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Replyment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+  <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nickname</th>
+              <th scope="col">Replyment</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
         <div class="row">
             <div class="col-sm">
-              <td class="col-xs-3"><%= comment.replyment %></td>
-              <td class="col-xs-3"><%= link_to 'show', micropost_comment_path(@micropost, comment), :class => "btn btn-warning" %></td>
-              <td class="col-xs-3"><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
-        </div>
+                  <td class="col-xs-3"><%= comment.user.nickname %></td>
+                  <td class="col-xs-3"><%= comment.replyment %></td>
+                  <td class="col-xs-3"><%= link_to 'show', micropost_comment_path(@micropost, comment), :class => "btn btn-warning" %></td>
+                  <td class="col-xs-3"><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+            </div>
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Comment', new_micropost_comment_path, :class => "btn btn-primary" %>
-
-<%= link_to 'Back',microposts_path, :class => "btn btn-info" %>
-
+</table><br>
+  <%= link_to 'New Comment', new_micropost_comment_path, :class => "btn btn-primary" %>
+  <%= link_to 'Back',microposts_path, :class => "btn btn-secondary" %>
+ </div>
 </div>

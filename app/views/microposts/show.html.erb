@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
 <div class="container">
 
   <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Replyment</th>
-            <th scope="col">Tag</th>
+            <th scope="col">Micropost</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -26,6 +25,6 @@
 
 
     <td class="text-center"><%= link_to 'Edit', edit_micropost_path(@micropost) ,:class => "btn btn-danger"%></td>
-    <td class="text-center"><%= link_to 'Back', mypage_microposts_path ,:class => "btn btn-info"%></td>
+    <td class="text-center"><%= link_to 'Back', mypage_microposts_path ,:class => "btn btn-secondary"%></td>
 
   </div>

@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
         flash[:success] = "Comment created!"
         redirect_to micropost_comments_path
       else
-        render :new
+        flash[:alert] = "You cannot create!"
+        redirect_to new_micropost_comment_path
       end
   end
 

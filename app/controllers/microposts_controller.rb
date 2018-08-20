@@ -28,7 +28,8 @@ class MicropostsController < ApplicationController
         flash[:success] = "Micropost created!"
         redirect_to microposts_path
       else
-        render :new
+        flash[:alert] = "You cannot create!"
+        redirect_to new_micropost_path
       end
     end
 
@@ -37,12 +38,14 @@ class MicropostsController < ApplicationController
           flash[:success] = "Micropost updated"
           redirect_to microposts_path
         else
+          flash[:alert] = "You cannot update!"
           render :edit
         end
     end
 
     def destroy
       @micropost.destroy
+      flash[:success] = "Micropost destroyed"
       redirect_to microposts_path
     end
 

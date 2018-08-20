@@ -1,22 +1,28 @@
 <p id="notice"><%= notice %></p>
-
 <div class="container">
-
-<table class="table">
+  <div class="table-responsive">
+    <table class="table">
       <thead class="thead-dark">
         <tr>
+          <th scope="col">Nickname</th>
           <th scope="col">Replyment</th>
           <th colspan="3"></th>
         </tr>
       </thead>
-
         <tbody>
-            <tr>
-              <td class="text-center">
-                  <%= @comment.replyment %>
+          <tr>
+            <div class="row">
+                <div class="col-sm">
+                    <td class="col-xs-3"><%= @comment.user.nickname %></td>
+                </div>
+                <div class="col-sm">
+                    <td class="col-xs-3"><%= @comment.replyment %></td>
+                </div>
               </td>
             </tr>
         </tbody>
-</table>
-    <td><%= link_to 'Back', micropost_comments_path, :class => "btn btn-info" %></td>
+      </table>
+              <td><%= link_to 'Back', micropost_comments_path, :class => "btn btn-secondary" %></td>
+            </div>
+  </div>
 </div>
