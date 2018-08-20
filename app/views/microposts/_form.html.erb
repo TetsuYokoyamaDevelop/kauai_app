@@ -6,7 +6,7 @@
     </tr>
       <%= form_for(@micropost) do |form| %>
               <div class="field">
-                  <%= form.text_field :text, class: 'form-control', placeholder: "Text", autofocus: true  %><br>
+                  <%= form.text_area :text, class: 'form-control', placeholder: "Text", autofocus: true  %><br>
               </div>
               <div class="actions">
                 <%= form.submit :class => "btn btn-primary"%>

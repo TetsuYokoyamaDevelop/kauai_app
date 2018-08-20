@@ -1,16 +1,18 @@
 <h1 class="text-center">New Comments</h1>
 
 <div class="container">
-
-<h3><span class="badge badge-success"><th scope="col">Nickname: <%= @user.nickname %></th></span></h3>
+<tr>
+  <h3><span class="badge badge-success"><th scope="col">Posted by: <%= @micropost.user.nickname %></th></span></h3>
+  <th colspan="3"></th>
+</tr>
 <p>
-  <strong>text:</strong>
+  <strong>Post:</strong>
   <%= @micropost.text%>
-</p>
+</p><br>
 <%= form_for(@comment, :url => micropost_comments_path) do |form| %>
 
   <div class="field">
-    <%= form.text_field :replyment , class: 'form-control', placeholder: "Replyment", autofocus: true  %><br>
+    <%= form.text_area :replyment , class: 'form-control', placeholder: "Replyment", autofocus: true  %><br>
   </div>
 
   <div class="actions">
