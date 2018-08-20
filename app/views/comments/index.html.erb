@@ -23,7 +23,7 @@
             <div class="col-sm">
                   <td class="col-xs-3"><%= comment.user.nickname %></td>
                   <td class="col-xs-3"><%= comment.replyment %></td>
-                  <td class="col-xs-3"><%= link_to 'show', micropost_comment_path(@micropost, comment), :class => "btn btn-warning" %></td>
+                  <td class="col-xs-3"><%= link_to '表示', micropost_comment_path(@micropost, comment), :class => "btn btn-info" %></td>
                   <td class="col-xs-3"><%= link_to 'Destroy', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
             </div>
       </tr>

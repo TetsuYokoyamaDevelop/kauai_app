@@ -26,8 +26,8 @@
                 </div>
             </tr>
             <tr>
-              <td><%= link_to 'リプライ', micropost_comments_path(micropost) ,:class => "btn btn-info"%></td>
-              <td><%= link_to 'show', micropost_path(micropost) ,:class => "btn btn-warning"%></td>
+              <td><%= link_to 'リプライ', micropost_comments_path(micropost) ,:class => "btn btn-primary"%></td>
+              <td><%= link_to '表示', micropost_path(micropost) ,:class => "btn btn-info"%></td>
               <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger"%></td>
             </tr>
           <% end %>

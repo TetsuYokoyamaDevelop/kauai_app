@@ -9,7 +9,7 @@
                   <%= form.text_area :text, class: 'form-control', placeholder: "ツイート", autofocus: true  %><br>
               </div>
               <div class="actions">
-                <%= form.submit :class => "btn btn-primary"%>
+                <%= form.submit "ツイート",:class => "btn btn-primary"%>
               </div>
             <% end %><br>
         <%= link_to 'Back', microposts_path ,:class => "btn btn-secondary"%>
