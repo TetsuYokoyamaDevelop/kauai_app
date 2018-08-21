@@ -14,12 +14,12 @@
          <h5 class="my-0 mr-md-auto font-weight-normal">Tetsutter</h5>
         <nav class="my-2 my-md-0 mr-md-3">
       <% if current_user %>
-         <a class="p-2 text-dark" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) %></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "PR編集", edit_user_path(current_user.id) %></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "ツイート", microposts_path(current_user.id) %></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) , :class => "btn btn-outline-info"%></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "プロフィール", user_path(current_user.id) , :class => "btn btn-outline-success" %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "ツイート", microposts_path(current_user.id) , :class =>"btn btn-outline-primary" %></a>
+         <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "btn btn-outline-secondary"%></a>
       <% else %>
-        <a class="p-2 text-dark" href="#"><%= link_to "登録", new_user_path %></a>
+        <a class="p-2 text-dark" href="#"><%= link_to "登録", new_user_path , :class => "btn btn-outline-danger"%></a>
       <% end %>
         </nav>
        </div>

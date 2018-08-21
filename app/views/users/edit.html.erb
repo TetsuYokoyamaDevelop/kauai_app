@@ -9,13 +9,7 @@
     </div><br>
 
     <div class="field">
-      <%= form.label "性別" %><br>
-      <%= form.label "男性" %>
-      <%= form.radio_button :gender, 1, label: "male", inline: true %><br>
-      <%= form.label "女性" %>
-      <%= form.radio_button :gender, 2, label: "female", inline: true %><br>
-      <%= form.label "その他" %>
-      <%= form.radio_button :gender, 3, label: "other", inline: true %><br>
+      <%= form.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-outline-secondary' %>
     </div><br>
 
     <div class="field">
@@ -33,7 +27,7 @@
 
 <% end %><br>
 
-<%= link_to '表示', @user , :class => "btn btn-warning"%>
+<%= link_to '表示', @user , :class => "btn btn-info"%>
 <%= link_to 'Back', microposts_path ,:class => "btn btn-secondary"%>
 
 </div>

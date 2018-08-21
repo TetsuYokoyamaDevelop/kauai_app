@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
     validates :nickname, presence:true, on: :update
     validates :gender, presence:true, on: :update
-    enum gender_type: { male: 1, female: 2, other: 3}
+    enum gender: { 男性: 1, 女性: 2, その他: 3}
     validates :birthday, presence:true, on: :update
     validates :introduction, length: { maximum: 140 }
 end

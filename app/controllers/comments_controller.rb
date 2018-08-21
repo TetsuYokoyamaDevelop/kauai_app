@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment = @micropost.comments.where(user_id: current_user.id).new(comment_params)
       if @micropost.save
-        flash[:success] = "Comment created!"
+        flash[:success] = "リプライしました"
         redirect_to micropost_comments_path
       else
-        flash[:alert] = "You cannot create!"
+        flash[:alert] = "リプライできませんでした"
         redirect_to new_micropost_comment_path
       end
   end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
         @comment.destroy
         redirect_to micropost_comments_path
       else
-        flash[:alert] = "You cannot destroy this comment"
+        flash[:alert] = "このコメントは削除できません"
         render :show
       end
   end

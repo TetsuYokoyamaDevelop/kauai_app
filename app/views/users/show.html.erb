@@ -1,24 +1,36 @@
 <p id="notice" class="text-center"><%= notice %></p>
 
-<p>
-  <strong>ニックネーム:</strong>
-  <%= @user.nickname %>
-</p>
+<div class="container">
+      <div class="row">
+        <table class="table table-user-information">
+                    <tbody>
+                            <tr>
+                              <td>
+                                <strong>ニックネーム:</strong>
+                                <%= @user.nickname %>
+                              </td>
+                            <tr>
+                              <td>
+                                <strong>性別:</strong>
+                                <%= @user.gender %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                              <strong>生年月日:</strong>
+                              <%= @user.birthday %>
+                             </td>
+                            </tr>
+                          <tr>
+                            <td>
+                            <strong>自己紹介:</strong>
+                            <%= @user.introduction %>
+                           </td>
+                          </tr>
+                      </tbody>
+        </table>
+      </div>
+<%= link_to '編集', edit_user_path(@user),:class => "btn btn-success" %>
+<%= link_to 'Back', microposts_path,:class => "btn btn-secondary" %>
 
-<p>
-  <strong>性別:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>生年月日:</strong>
-  <%= @user.birthday %>
-</p>
-
-<p>
-  <strong>自己紹介:</strong>
-  <%= @user.introduction %>
-</p>
-
-<%= link_to '編集', edit_user_path(@user),:class => "btn btn-success" %> 
-<%= link_to 'Back', edit_user_path(@user),:class => "btn btn-secondary" %>
+</div>
