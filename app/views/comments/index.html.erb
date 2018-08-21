@@ -4,8 +4,9 @@
 
 <div class="container">
 
-  <h3><span class="badge badge-success">by : <%= @micropost.user.nickname %></span></h3>
+  <h3><span class="badge badge-primary">by : <%= @micropost.user.nickname %></span></h3><br>
     <%= @micropost.text %><br>
+    <br>
   <div class="table-responsive">
 
     <table class="table">
@@ -17,11 +18,9 @@
         </div>
             <p><%= comment.replyment %></p>
           </td>
+          <td class="col-xs-3"><%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+          </td>
       </tr>
-        <tr>
-            <td><%= link_to '表示', micropost_comment_path(@micropost, comment), :class => "btn btn-info" %>
-            <td class="col-xs-3"><%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
-        </tr>
         <% end %>
       </tbody>
     </table><br>

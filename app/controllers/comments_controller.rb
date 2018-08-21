@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
         redirect_to micropost_comments_path
       else
         flash[:alert] = "このコメントは削除できません"
-        render :show
+        redirect_to micropost_comments_path
       end
   end
 
