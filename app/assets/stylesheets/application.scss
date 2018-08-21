@@ -3274,6 +3274,11 @@ input[type="button"].btn-block {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
+//insert
+// a.btn btn-primary btn-lg{
+//   @media only screen and (min-width : 768px) {
+//        width: 100%}
+// }
 
 .btn-group-vertical {
   -ms-flex-direction: column;
@@ -3323,9 +3328,27 @@ input[type="button"].btn-block {
   pointer-events: none;
 }
 //insert
+
 .button_wrapper{
-   text-align:center;
+text-align: center;
 }
+
+//    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+//      .button_wrapper{
+//        width: 100%;
+//      }
+// }
+
+// @media (min-width: @screen-lg-min) {
+//   .button_wrapper{
+//   text-align: center;
+//   }
+// }
+
+
+
+// /* Sサイズ、タブレット : Small Devices, Tablets */
+
 
 .input-group {
   position: relative;
