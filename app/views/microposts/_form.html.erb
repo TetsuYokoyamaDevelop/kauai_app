@@ -8,8 +8,10 @@
               <div class="field">
                   <%= form.text_area :text, class: 'form-control', placeholder: "ツイート", autofocus: true  %><br>
               </div>
-              <div class="actions">
-                <%= form.submit "ツイート",:class => "btn btn-primary"%>
+              <div class="center-block">
+                <div class="actions">
+                  <%= form.submit "ツイート",:class => "btn btn-primary"%>
+                </div>
               </div>
             <% end %><br>
         <%= link_to 'Back', post_history_microposts_path ,:class => "btn btn-secondary"%>

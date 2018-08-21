@@ -24,7 +24,9 @@
         <% end %>
       </tbody>
     </table><br>
-  <%= link_to 'リプライ', new_micropost_comment_path, :class => "btn btn-primary" %>
+    <div class="button_wrapper">
+        <%= link_to 'リプライ', new_micropost_comment_path, :class => "btn btn-primary btn-lg" %>
+    </div>
   <%= link_to 'Back',microposts_path, :class => "btn btn-secondary" %>
  </div>
 </div>

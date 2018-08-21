@@ -8,16 +8,20 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
-
   <div id="nav">
-      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-auto mb-auto bg-white border-bottom shadow-sm">
          <h5 class="my-0 mr-md-auto font-weight-normal">Tetsutter</h5>
-        <nav class="my-2 my-md-0 mr-md-3">
+           <nav class="my-2 my-md-0 mr-md-3">
       <% if current_user %>
-         <a class="p-2 text-dark" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) , :class => "btn btn-outline-info"%></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "プロフィール", user_path(current_user.id) , :class => "btn btn-outline-success" %></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "ツイート", microposts_path(current_user.id) , :class =>"btn btn-outline-primary" %></a>
-         <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "btn btn-outline-secondary"%></a>
+        <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          メニュー
+        </button>
+          <div class="dropdown-menu">
+               <a class="dropdown-item" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) , :class =>"text-info"%></a><br>
+                <a class="dropdown-item" href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a><br>
+                <a class="dropdown-item" href="#"><%= link_to "ツイート", microposts_path(current_user.id), :class =>"text-primary" %></a><br>
+           </div>
+        <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "btn btn-outline-secondary btn-sm"%></a>
       <% else %>
         <a class="p-2 text-dark" href="#"><%= link_to "登録", new_user_path , :class => "btn btn-outline-danger"%></a>
       <% end %>

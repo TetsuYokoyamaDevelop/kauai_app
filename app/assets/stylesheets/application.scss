@@ -87,6 +87,7 @@ body {
   background-color: #fff;
 }
 
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
@@ -3320,6 +3321,10 @@ input[type="button"].btn-block {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
+}
+//insert
+.button_wrapper{
+   text-align:center;
 }
 
 .input-group {
