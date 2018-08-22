@@ -10,7 +10,7 @@
           <% @microposts.each do |micropost| %>
             <tr>
                 <td class="col-xs-3"><p class="text-primary">by: <%= micropost.user.nickname %></p><br>
-                  <p><%= micropost.text %></p>
+                  <p><%= micropost.text %></p><br>
                 </td>
                 <td class="col-xs-3"><%= link_to 'リプライ', micropost_comments_path(micropost) ,:class => "btn btn-primary"%></td>
             </tr>
