@@ -25,20 +25,20 @@ class MicropostsController < ApplicationController
     def create
       @micropost = Micropost.where(user_id: current_user.id).new(micropost_params)
       if @micropost.save
-        flash[:success] = "Micropost created!"
+        flash[:success] = "ツイートしました!"
         redirect_to microposts_path
       else
-        flash[:alert] = "You cannot create!"
+        flash[:alert] = "ツイートできませんでした!"
         redirect_to new_micropost_path
       end
     end
 
     def update
         if @micropost.update(micropost_params)
-          flash[:success] = "Micropost updated"
+          flash[:success] = "更新しました"
           redirect_to microposts_path
         else
-          flash[:alert] = "You cannot update!"
+          flash[:alert] = "更新できませんでした"
           render :edit
         end
     end

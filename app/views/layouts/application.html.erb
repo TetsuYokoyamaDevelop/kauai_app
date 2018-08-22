@@ -14,15 +14,15 @@
          <h5 class="my-0 mr-md-auto font-weight-normal">Tetsutter</h5>
            <nav class="my-2 my-md-0 mr-md-3">
       <% if current_user %>
-        <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           メニュー
         </button>
           <div class="dropdown-menu">
-               <a class="dropdown-item" href="#"><%= link_to "履歴", post_history_microposts_path(current_user.id) , :class =>"text-info"%></a><br>
-                <a class="dropdown-item" href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a><br>
-                <a class="dropdown-item" href="#"><%= link_to "ツイート", microposts_path(current_user.id), :class =>"text-primary" %></a><br>
+               <a class="dropdown-item" href="#"><%= link_to "履歴", post_history_microposts_path , :class =>"text-info"%></a>
+                <a class="dropdown-item" href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a>
+                <a class="dropdown-item" href="#"><%= link_to "ツイート", microposts_path, :class =>"text-primary" %></a><br>
+                <a class="dropdown-item" href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "text-secondary"%></a>
            </div>
-        <a class="p-2 text-dark" href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "btn btn-outline-secondary btn-sm"%></a>
       <% else %>
         <a class="p-2 text-dark" href="#"><%= link_to "登録", new_user_path , :class => "btn btn-outline-danger"%></a>
       <% end %>
@@ -33,6 +33,7 @@
   </div>
   <div>
     <p id="alert" class="text-center"><%= flash[:alert] %></p>
+    <p id="success" class="text-center"><%= flash[:success] %></p>
   </div>
   <%= yield %>
 
