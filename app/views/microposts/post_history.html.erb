@@ -13,11 +13,12 @@
             <td class="col-xs-3"><p class="text-primary">by: <%= micropost.user.nickname %></p><br>
           </div>
               <p><%= micropost.text %></p><br>
-              <%= link_to 'リプライ', micropost_comments_path(micropost) ,:class => "btn btn-primary"%>
               <%= link_to '編集', edit_micropost_path(micropost) ,:class => "btn btn-success"%>
+              <%= link_to '削除', micropost, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger"%>
             </td>
             <td>
-              <%= link_to '削除', micropost, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger"%>
+              <%= link_to 'リプライ', micropost_comments_path(micropost) ,:class => "btn btn-primary"%>
+
             </td>
           </tr>
           <% end %>

@@ -8,7 +8,9 @@
     <%= @micropost.text %><br>
     <br>
   <div class="table-responsive">
-
+    <div class="button_wrapper">
+        <%= link_to 'リプライ', new_micropost_comment_path, :class => "btn btn-primary btn-lg" %>
+    </div><br>
     <table class="table">
       <tbody>
     <% @comments.each do |comment| %>
@@ -16,17 +18,13 @@
         <div class="text-primary">
           <td class="col-xs-3"><p class="text-primary">by: <%= comment.user.nickname %></p><br>
         </div>
-            <p><%= comment.replyment %></p>
-          </td>
-          <td class="col-xs-3"><%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+            <p><%= comment.replyment %></p><br>
+            <%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
           </td>
       </tr>
         <% end %>
       </tbody>
     </table><br>
-    <div class="button_wrapper">
-        <%= link_to 'リプライ', new_micropost_comment_path, :class => "btn btn-primary btn-lg" %>
-    </div>
   <%= link_to 'Back',microposts_path, :class => "btn btn-secondary" %>
  </div>
 </div>

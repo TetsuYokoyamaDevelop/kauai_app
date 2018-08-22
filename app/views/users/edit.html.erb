@@ -1,32 +1,24 @@
 <h1 class ="text-center">プロフィール編集</h1><br>
-
 <div class="container">
-
 <%= form_for(@user) do |form| %>
-
-    <div class="field">
-      <%= form.text_field :nickname , class: 'form-control', placeholder: "ニックネーム"  %><br>
-    </div><br>
-
-    <div class="field">
-      <%= form.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-outline-secondary' %>
-    </div><br>
-
-    <div class="field">
-      <%= form.label "生年月日" %><br>
-      <%= form.date_select :birthday %><br>
-    </div><br>
-
-    <div class="field">
-      <%= form.text_area :introduction, class: 'form-control', placeholder: "自己紹介" %><br>
-    </div>
-
-  <div class="actions">
-    <%= form.submit "更新", :class => "btn btn-primary"%><br>
+  <div class="form-group">
+        <div class="field">
+          <%= form.text_field :nickname , class: 'form-control', placeholder: "ニックネーム"  %><br>
+        </div><br>
+        <div class="field">
+          <%= form.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-outline-secondary' %>
+        </div><br>
+        <div class="field">
+          <%= form.label "生年月日" %><br>
+          <%= form.date_select :birthday %><br>
+        </div><br>
+        <div class="field">
+          <%= form.text_area :introduction, class: 'form-control', placeholder: "自己紹介" %><br>
+        </div>
+        <div class="actions">
+          <%= form.submit "更新", :class => "btn btn-primary"%><br>
+        </div><br>
+        <%= link_to 'Back', @user ,:class => "btn btn-secondary"%>
+<% end %>
   </div>
-
-<% end %><br>
-
-<%= link_to 'Back', @user ,:class => "btn btn-secondary"%>
-
 </div>
