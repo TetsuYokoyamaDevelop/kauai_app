@@ -13,4 +13,5 @@ class User < ApplicationRecord
     enum gender: { 男性: 1, 女性: 2, その他: 3}
     validates :birthday, presence:true, on: :update
     validates :introduction, length: { maximum: 140 }
+    mount_uploader :image, ImageUploader
 end

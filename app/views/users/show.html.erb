@@ -6,9 +6,19 @@
                     <tbody>
                             <tr>
                               <td>
+                                <% if @user.image? %>
+                                  <%= image_tag @user.image.thumb.url %>
+                                <% else %>
+                                  <%= image_tag("/images/icon/no-image.png") %>
+                                <% end %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
                                 <strong>ニックネーム:</strong>
                                 <%= @user.nickname %>
                               </td>
+                            </tr>
                             <tr>
                               <td>
                                 <strong>性別:</strong>
