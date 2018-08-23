@@ -9,6 +9,13 @@
             <tbody>
           <% @microposts.each do |micropost| %>
             <tr>
+                <td>
+                  <% if micropost.user.image? %>
+                    <%= image_tag micropost.user.image.thumb.url %>
+                  <% else %>
+                    <%= image_tag("/images/icon/no-image.png") %>
+                  <% end %>
+                </td>
                 <td class="col-xs-3"><p class="text-primary">by: <%= micropost.user.nickname %></p><br>
                   <p><%= micropost.text %></p><br>
                 </td>

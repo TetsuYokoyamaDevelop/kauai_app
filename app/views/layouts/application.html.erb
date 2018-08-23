@@ -18,13 +18,15 @@
       <label class="nav-unshown" id="nav-close" for="nav-input"></label>
       <div id="nav-content" class="mr-auto"><br>
         <h5>
-          <a href="#"><%= link_to "履歴", post_history_microposts_path , :class =>"text-info"%></a><br>
-            <br>
-          <a href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a><br>
-            <br>
-          <a href="#"><%= link_to "ツイート", microposts_path, :class =>"text-primary" %></a><br>
-            <br>
-          <a href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "text-secondary"%></a>
+          <div class="button_wrapper">
+            <a href="#"><%= link_to "履歴", post_history_microposts_path , :class =>"text-info"%></a><br>
+              <br>
+            <a href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a><br>
+              <br>
+            <a href="#"><%= link_to "ツイート", microposts_path, :class =>"text-primary" %></a><br>
+              <br>
+            <a href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "text-secondary"%></a>
+          </div>
         </h5>
        </div>
    </div>

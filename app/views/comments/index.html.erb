@@ -3,11 +3,22 @@
 <h1 class="text-center">リプライ</h1><br>
 
 <div class="container">
-
-  <h3><span class="badge badge-primary">by : <%= @micropost.user.nickname %></span></h3><br>
-    <%= @micropost.text %><br>
-    <br>
   <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td align="right">
+          <% if @micropost.user.image? %>
+            <%= image_tag @micropost.user.image.thumb.url %>
+          <% else %>
+            <%= image_tag("/images/icon/no-image.png") %>
+          <% end %>
+        </td>
+        <br>
+        <td><p class="text-primary">by : <%= @micropost.user.nickname %></p><br>
+          <%= @micropost.text %><br>
+        </td>
+      </tr>
+    </table><br>
     <div class="button_wrapper">
         <%= link_to 'リプライ', new_micropost_comment_path, :class => "btn btn-primary btn-lg" %>
     </div><br>
@@ -15,11 +26,17 @@
       <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <div class="text-primary">
-          <td class="col-xs-3"><p class="text-primary">by: <%= comment.user.nickname %></p><br>
-        </div>
-            <p><%= comment.replyment %></p><br>
-            <%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        <td align="right"> <% if comment.user.image? %>
+            <%= image_tag comment.user.image.thumb.url %>
+          <% else %>
+            <%= image_tag("/images/icon/no-image.png") %>
+          <% end %>
+        </td>
+        <td>
+          <p class="text-primary">by: <%= comment.user.nickname %></p>
+            <p><%= comment.replyment %></p>
+        </td>
+            <td><%= link_to '削除', micropost_comment_path(@micropost, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
           </td>
       </tr>
         <% end %>
