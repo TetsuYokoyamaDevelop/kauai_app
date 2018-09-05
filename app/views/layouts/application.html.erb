@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome</title>
+    <title>Micropost</title>
       <%= stylesheet_link_tag    "application" %>
       <%= javascript_include_tag "application" %>
       <%= csrf_meta_tags %>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
-
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", logout_path, method: :post %>
-      <%= link_to "Post History", micropost_path(current_user.id) %>
-    <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", login_path %>
-    <% end %>
+  <div id="nav-drawer" >
+      <div class="d-flex flex-column flex-md-row align-items-left p-3 px-md-auto mb-auto bg-white border-bottom shadow-sm">
+         <h5 class="my-0 mr-md-auto font-weight-normal">Tetsutter</h5><br>
+      <% if current_user %>
+      <input id="nav-input" type="checkbox" class="nav-unshown">
+      <label id="nav-open" for="nav-input"><span></span></label>
+      <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+      <div id="nav-content" class="mr-auto"><br>
+        <h5>
+          <div class="button_wrapper">
+            <a href="#"><%= link_to "履歴", post_history_microposts_path , :class =>"text-info"%></a><br>
+              <br>
+            <a href="#"><%= link_to "プロフィール", user_path(current_user.id), :class =>"text-success" %></a><br>
+              <br>
+            <a href="#"><%= link_to "ツイート", microposts_path, :class =>"text-primary" %></a><br>
+              <br>
+            <a href="#"><%= link_to "ログアウト", logout_path, method: :post  , :class => "text-secondary"%></a>
+          </div>
+        </h5>
+       </div>
+   </div>
   </div>
-  <div>
-    <p id="alert"><%= flash[:alert] %></p>
-  </div>
-  <%= yield %>
+      <% else %>
+        <nav>
+          <a class="text-dark" href="#"><%= link_to "登録", new_user_path , :class => "btn btn-danger"%></a>
+        </nav>
+      <% end %>
 
+    </div>
+  </div>
+  <div><br>
+    <p id="alert" class="text-center"><%= flash[:alert] %></p>
+    <p id="success" class="text-center"><%= flash[:success] %></p>
+  </div>
+    <%= yield %>
   </body>
 </html>

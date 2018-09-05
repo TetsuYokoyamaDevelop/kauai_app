@@ -1,37 +1,31 @@
-<h1>Editing User</h1>
-
+<h1 class ="text-center">プロフィール編集</h1><br>
+<div class="container">
 <%= form_for(@user) do |form| %>
-
-    <div class="field">
-      <%= form.label :nickname %><br>
-      <%= form.text_field :nickname %><br>
-    </div>
-
-    <div class="field">
-      <%= form.label :gender %><br>
-      <%= form.label :male %><br>
-      <%= form.radio_button :gender, 1, label: "male", inline: true %><br>
-      <%= form.label :female %><br>
-      <%= form.radio_button :gender, 2, label: "female", inline: true %><br>
-      <%= form.label :other %><br>
-      <%= form.radio_button :gender, 3, label: "other", inline: true %><br>
-    </div>
-
-    <div class="field">
-      <%= form.label :birthday %><br>
-      <%= form.date_select :birthday %><br>
-    </div>
-
-    <div class="field">
-      <%= form.label :introduction %><br>
-      <%= form.text_field :introduction %><br>
-    </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+  <div class="form-group">
+        <div class="field">
+          <%= form.label "ニックネーム" %><br>
+          <%= form.text_field :nickname , class: 'form-control', placeholder: "ニックネーム"  %><br>
+        </div><br>
+        <div class="field">
+          <%= form.label "プロフィール画像" %><br>
+          <%= form.file_field :image %><br>
+        </div><br>
+        <div class="field">
+          <%= form.label "性別" %><br>
+          <%= form.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-outline-secondary' %>
+        </div><br>
+        <div class="field">
+          <%= form.label "生年月日" %><br>
+          <%= form.date_select :birthday %><br>
+        </div><br>
+        <div class="field">
+          <%= form.label "自己紹介" %><br>
+          <%= form.text_area :introduction, class: 'form-control', placeholder: "自己紹介" %><br>
+        </div>
+        <div class="actions">
+          <%= form.submit "更新", :class => "btn btn-primary"%><br>
+        </div><br>
+        <%= link_to 'Back', @user ,:class => "btn btn-secondary"%>
 <% end %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  </div>
+</div>

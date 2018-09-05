@@ -1,13 +1,19 @@
 <%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
+<div class="container">
+    <div class="form-group">
+          <label for="email">Email:</label>
+            <div class="field">
+              <%= text_field_tag :email,params[:email], class: 'form-control', placeholder: "メールアドレス", autofocus: true  %><br>
+            </div>
+          <label for="password">Password:</label>
+            <div class="field">
+              <%= password_field_tag :password ,params[:password], class: 'form-control', placeholder: "パスワード", autofocus: true  %><br>
+            </div>
+      <div class="actions">
+        <div class="button_wrapper">
+          <%= submit_tag "ログイン" ,:class => "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+    </div>
 <% end %>
+</div>

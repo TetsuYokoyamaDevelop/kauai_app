@@ -1,23 +1,26 @@
+<h1 class="text-center">登録</h1>
 <%= form_for(@user) do |form| %>
-
-    <div class="field">
-      <%= form.label :email %><br>
-      <%= form.text_field :email %><br>
-    </div>
-
-    <div class="field">
-       <%= form.label :password %><br>
-       <%= form.password_field :password %><br>
-    </div>
-
-    <div class="field">
-       <%= form.label :password_confirmation %><br>
-       <%= form.password_field :password_confirmation %><br>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-   <% end %>
-
-<%= link_to 'Back', users_path %>
+  <div class="container">
+      <form class="form-horizontal" action="/action_page.php">
+        <div class="form-group">
+                <label for="email">Email:</label>
+                  <div class="field">
+                    <%= form.text_field :email, class: 'form-control', placeholder: "Email"%>
+                  </div><br>
+                <label for="password">Password:</label>
+                  <div class="field">
+                    <%= form.password_field :password , class: 'form-control', placeholder: "パスワード" %>
+                  </div><br>
+                <label for="password_confirmation">Password確認:</label>
+                <div class="field">
+                  <%= form.password_field :password_confirmation, class: 'form-control', placeholder: "パスワード確認"%><br>
+                </div>
+            <div class="button_wrapper">
+              <div class="actions">
+                <%= form.submit "登録", :class => "btn btn-danger btn-lg"%><br>
+              </div>
+            </div>
+       <% end %><br>
+      <%= link_to 'Back', login_path ,:class => "btn btn-secondary" %>
+  </div>
+</form>

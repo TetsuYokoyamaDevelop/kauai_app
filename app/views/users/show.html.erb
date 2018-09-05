@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center">プロフィール</h1>
+<p id="notice" class="text-center"><%= notice %></p>
+<div class="container">
+      <div class="row">
+        <table class="table table-user-information">
+                    <tbody>
+                            <tr>
+                              <td>
+                                <% if @user.image? %>
+                                  <%= image_tag @user.image.thumb.url %>
+                                <% else %>
+                                  <%= image_tag("/images/icon/no-image.png") %>
+                                <% end %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <strong>ニックネーム:</strong>
+                                <%= @user.nickname %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <strong>性別:</strong>
+                                <%= @user.gender %>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                              <strong>生年月日:</strong>
+                              <%= @user.birthday %>
+                             </td>
+                            </tr>
+                          <tr>
+                            <td>
+                            <strong>自己紹介:</strong>
+                            <%= @user.introduction %>
+                           </td>
+                          </tr>
+                      </tbody>
+        </table>
+      </div>
+<%= link_to '編集', edit_user_path(@user),:class => "btn btn-success" %>
+<%= link_to 'Back', microposts_path,:class => "btn btn-secondary" %>
 
-<p>
-  <strong>nickname:</strong>
-  <%= @user.nickname %>
-</p>
-
-<p>
-  <strong>gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>birthday:</strong>
-  <%= @user.birthday %>
-</p>
-
-<p>
-  <strong>introduction:</strong>
-  <%= @user.introduction %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

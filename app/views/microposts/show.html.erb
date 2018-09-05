@@ -1,22 +1,30 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
-  <p>
-    <strong>nickname:</strong>
-    <%= @user.nickname %>
-  </p>
+<div class="container">
 
-  <%= @microposts.each do |post| %>
+  <table class="table">
+        <thead>
+          <tr class="bg-primary">
+              <th scope="col"><p class="text-white">ツイート</p></th>
+              <th colspan="3"></th>
+          </tr>
+        </thead>
 
-    <p>
-      <strong>text</strong>
-      <%= post.text %>
-      <strong>tag:</strong>
-      <%= post.tag %>
-    </p>
+        <tbody>
+            <tr>
+              <div class="row">
+                  <div class="col-sm">
+                      <td class="col-xs-3"><%= @micropost.text %></td>
+                  </div>
+                  <div class="">
+                    <td class="col-xs-3"><%= @micropost.tag %></td>
+                  </div>
+            </tr>
+        </tbody>
+  </table>
 
-    <td><%= link_to 'Edit', edit_micropost_path(post) %></td>
-    <td><%= link_to 'Destroy', micropost_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-  <% end %>
+    <td class="text-center"><%= link_to '編集', edit_micropost_path(@micropost) ,:class => "btn btn-success"%></td>
+    <td class="text-center"><%= link_to 'Back', post_history_microposts_path ,:class => "btn btn-secondary"%></td>
 
-<%= link_to 'Back', microposts_path %>
+  </div>

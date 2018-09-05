@@ -12,8 +12,15 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sorcery'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

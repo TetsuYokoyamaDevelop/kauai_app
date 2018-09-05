@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :gender, default: 0
       t.date :birthday
       t.text :introduction
+      t.string :image
 
       t.timestamps
     end

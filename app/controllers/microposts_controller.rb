@@ -1,58 +1,64 @@
 class MicropostsController < ApplicationController
     before_action :require_login
-    before_action :set_micropost, only: [:edit, :update, :destroy]
+    before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+    before_action :indicate_current_user, only: [:new, :edit, :post_history, :update, :destroy]
+    before_action :check_correct_user, only: [:edit, :destroy]
 
     def index
       @microposts = Micropost.all
     end
 
     def show
-      @user = current_user
-      @microposts = @user.microposts.all
     end
 
     def new
-      @user = current_user
       @micropost = Micropost.new
     end
 
     def edit
-      @user = current_user
+    end
+
+    def post_history
+      @microposts = @user.microposts.all
     end
 
     def create
-      @user = current_user
-      @micropost = @user.microposts.new(micropost_params)
+      @micropost = Micropost.where(user_id: current_user.id).new(micropost_params)
       if @micropost.save
-        flash[:success] = "Micropost created!"
+        flash[:success] = "ツイートしました!"
         redirect_to microposts_path
       else
-        render 'new'
+        flash[:alert] = "ツイートできませんでした!"
+        redirect_to new_micropost_path
       end
     end
 
     def update
-      @user = current_user
         if @micropost.update(micropost_params)
-          flash[:success] = "Micropost updated"
+          flash[:success] = "更新しました"
           redirect_to microposts_path
         else
-          render 'edit'
+          flash[:alert] = "更新できませんでした"
+          render :edit
         end
     end
 
     def destroy
-        if @micropost.user_id == current_user.id
-        @micropost.destroy
-        redirect_to microposts_path
-        else
-          render 'show'
-        end
+      @micropost.destroy
+      flash[:success] = "Micropost destroyed"
+      redirect_to post_history_microposts_path
     end
 
     private
 
-      def current_user
+      def check_correct_user
+        unless @micropost.user_id == current_user.id
+          flash[:alert] = "You do not have permission"
+          render :show
+        end
+      end
+
+      def indicate_current_user
         @user = current_user
       end
 

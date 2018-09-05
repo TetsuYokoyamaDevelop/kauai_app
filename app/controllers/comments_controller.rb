@@ -1,47 +1,54 @@
 class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
+  before_action :set_comment, only: [ :destroy, :show]
+  before_action :set_micropost, only: [:index, :show, :new, :create, :destroy]
 
-  # GET /profiles
-  # GET /profiles.json
   def index
-    @comments = Comment.all
+    @comments = @micropost.comments.all
   end
 
-  # GET /profiles/new
+  def show
+  end
+
   def new
     @user = current_user
-    @micropost = Micropost.find_by(id: params[:id])
-    @comment = Comment.new
+    @comment = @micropost.comments.new
   end
 
-  # POST /profiles
-  # POST /profiles.json
   def create
     @user = current_user
-    @comment = @micropost.comments.new(comment_params)
-
-    if @comment.save
-      redirect_to comments_path
-    else
-      render 'new'
-    end
+    @comment = @micropost.comments.where(user_id: current_user.id).new(comment_params)
+      if @micropost.save
+        flash[:success] = "リプライしました"
+        redirect_to micropost_comments_path
+      else
+        flash[:alert] = "リプライできませんでした"
+        redirect_to new_micropost_comment_path
+      end
   end
 
-  # DELETE /profiles/1
-  # DELETE /profiles/1.json
   def destroy
-    @comment.destroy
-    redirect_to comments_path
+      if @comment.user_id == current_user.id
+        @comment.destroy
+        redirect_to micropost_comments_path
+      else
+        flash[:alert] = "このコメントは削除できません"
+        redirect_to micropost_comments_path
+      end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def set_micropost
+      @micropost = Micropost.find_by(id: params[:micropost_id])
+    end
+
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:replyment, :user_id)
     end
+
 end
